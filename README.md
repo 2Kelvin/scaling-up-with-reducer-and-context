@@ -1,6 +1,8 @@
 # scaling-up-with-reducer-and-context
 
-n this project, I learnt:
+![scaling_app](https://user-images.githubusercontent.com/85868026/212743850-072cbe25-bae8-49f9-a0fa-1b7ef5180d26.png)
+
+In this project, I learnt:
 
 - `the 3 steps on how to combine a reducer with context`:
   - [x] **Creating the context**
