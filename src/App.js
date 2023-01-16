@@ -15,7 +15,7 @@ function TaskApp() {
 }
 export default function App() {
   return (
-    <div className="p-4 bg-slate-800 text-white h-screen">
+    <div className="p-4 bg-slate-800 text-white h-screen grid place-content-center">
       <TaskApp />
     </div>
   );

@@ -22,7 +22,7 @@ function TaskApp() {
 export default function App() {
   return React.createElement(
     "div",
-    { className: "p-4 bg-slate-800 text-white h-screen" },
+    { className: "p-4 bg-slate-800 text-white h-screen grid place-content-center" },
     React.createElement(TaskApp, null)
   );
 }
