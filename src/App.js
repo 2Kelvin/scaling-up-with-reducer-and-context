@@ -1,29 +1,16 @@
-import { TasksContext, TasksDispatchContext } from "../dist/TasksContext.js";
-import tasksReducer from "../dist/tasksReducer.js";
+import { TasksProvider } from "./TasksContext.js";
 import AddTask from "./AddTask.js";
 import TaskList from "./TaskList.js";
 
-const initialTasks = [
-  { id: 0, text: "Finish React documentation", done: true },
-  { id: 1, text: "Complete Tailwind CSS documentation", done: false },
-  { id: 2, text: "Complete portfolio with React and Tailwind", done: false },
-];
-
 function TaskApp() {
-  const [tasks, dispatch] = React.useReducer(tasksReducer, initialTasks);
-
   return (
-    <TasksContext.Provider value={tasks}>
-      <TasksDispatchContext.Provider value={dispatch}>
-        <div className="w-fit m-auto">
-          <h1 className="text-3xl text-extrabold mb-5">
-            My Goals January Week 3
-          </h1>
-          <AddTask />
-          <TaskList />
-        </div>
-      </TasksDispatchContext.Provider>
-    </TasksContext.Provider>
+    <TasksProvider>
+      <div className="w-fit m-auto">
+        <h1 className="text-3xl text-extrabold mb-5">Goals: January Week 3 </h1>
+        <AddTask />
+        <TaskList />
+      </div>
+    </TasksProvider>
   );
 }
 export default function App() {

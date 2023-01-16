@@ -1,8 +1,8 @@
-import { TasksDispatchContext } from "../dist/TasksContext.js";
+import { useTasksDispatch } from "./TasksContext.js";
 
 export default function Task({ task }) {
   const [isEditing, setIsEditing] = React.useState(false);
-  const dispatch = React.useContext(TasksDispatchContext);
+  const dispatch = useTasksDispatch();
   let taskContent;
 
   if (isEditing) {

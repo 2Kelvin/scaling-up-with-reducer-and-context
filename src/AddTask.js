@@ -1,4 +1,4 @@
-import { TasksDispatchContext } from "../dist/TasksContext.js";
+import { TasksDispatchContext } from "./TasksContext.js";
 
 let nextId = 3;
 
