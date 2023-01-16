@@ -561,6 +561,10 @@ video {
   width: fit-content;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 .overflow-hidden {
   overflow: hidden;
 }
@@ -644,6 +648,14 @@ video {
 .px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+}
+
+.pl-1 {
+  padding-left: 0.25rem;
+}
+
+.pl-3 {
+  padding-left: 0.75rem;
 }
 
 .text-xl {

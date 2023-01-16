@@ -1,5 +1,8 @@
-export default function Task({ task, onChangeTask, onDeleteTask }) {
+import { TasksDispatchContext } from "../dist/TasksContext.js";
+
+export default function Task({ task }) {
   const [isEditing, setIsEditing] = React.useState(false);
+  const dispatch = React.useContext(TasksDispatchContext);
   let taskContent;
 
   if (isEditing) {
@@ -9,9 +12,12 @@ export default function Task({ task, onChangeTask, onDeleteTask }) {
           className="text-slate-900 px-2 rounded-sm bg-slate-200"
           value={task.text}
           onChange={(e) => {
-            onChangeTask({
-              ...task,
-              text: e.target.value,
+            dispatch({
+              type: "changed",
+              task: {
+                ...task,
+                text: e.target.value,
+              },
             });
           }}
         />
@@ -40,20 +46,28 @@ export default function Task({ task, onChangeTask, onDeleteTask }) {
   return (
     <label>
       <input
-        className="mr-2"
+        className="mr-2 cursor-pointer"
         type="checkbox"
         checked={task.done}
         onChange={(e) => {
-          onChangeTask({
-            ...task,
-            done: e.target.checked,
+          dispatch({
+            type: "changed",
+            task: {
+              ...task,
+              done: e.target.checked,
+            },
           });
         }}
       />
       {taskContent}
       <button
         className="px-3 bg-red-400 shadow-md m-1 rounded-sm font-bold text-slate-800"
-        onClick={() => onDeleteTask(task.id)}
+        onClick={() =>
+          dispatch({
+            type: "deleted",
+            id: task.id,
+          })
+        }
       >
         Delete
       </button>

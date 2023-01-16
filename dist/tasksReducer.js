@@ -20,7 +20,7 @@ export default function tasksReducer(tasks, action) {
       });
     }
     case "deleted": {
-      return tasks.filter((t) => t.id !== action.task.id);
+      return tasks.filter((t) => t.id !== action.id);
     }
     default: {
       throw Error("Unknown action: " + action.type);

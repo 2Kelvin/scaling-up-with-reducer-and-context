@@ -1,9 +1,8 @@
+import { TasksContext } from "../dist/TasksContext.js";
 import Task from "./Task.js";
 
-export default function TaskList(_ref) {
-  var tasks = _ref.tasks,
-      onChangeTask = _ref.onChangeTask,
-      onDeleteTask = _ref.onDeleteTask;
+export default function TaskList() {
+  var tasks = React.useContext(TasksContext);
 
   return React.createElement(
     "ul",
@@ -12,11 +11,7 @@ export default function TaskList(_ref) {
       return React.createElement(
         "li",
         { key: task.id },
-        React.createElement(Task, {
-          task: task,
-          onChangeTask: onChangeTask,
-          onDeleteTask: onDeleteTask
-        })
+        React.createElement(Task, { task: task })
       );
     })
   );

@@ -1,3 +1,4 @@
+import { TasksContext, TasksDispatchContext } from "../dist/TasksContext.js";
 import tasksReducer from "../dist/tasksReducer.js";
 import AddTask from "./AddTask.js";
 import TaskList from "./TaskList.js";
@@ -7,43 +8,22 @@ const initialTasks = [
   { id: 1, text: "Complete Tailwind CSS documentation", done: false },
   { id: 2, text: "Complete portfolio with React and Tailwind", done: false },
 ];
-let nextId = initialTasks.length;
 
 function TaskApp() {
   const [tasks, dispatch] = React.useReducer(tasksReducer, initialTasks);
 
-  function handleAddTask(text) {
-    dispatch({
-      type: "added",
-      id: nextId++,
-      text: text,
-    });
-  }
-
-  function handleChangeTask(task) {
-    dispatch({
-      type: "changed",
-      task: task,
-    });
-  }
-
-  function handleDeleteTask(taskId) {
-    dispatch({
-      type: "deleted",
-      id: taskId,
-    });
-  }
-
   return (
-    <div className="w-fit m-auto">
-      <h1 className="text-3xl text-extrabold mb-5">My Goals January Week 3</h1>
-      <AddTask onAddTask={handleAddTask} />
-      <TaskList
-        tasks={tasks}
-        onChangeTask={handleChangeTask}
-        onDeleteTask={handleDeleteTask}
-      />
-    </div>
+    <TasksContext.Provider value={tasks}>
+      <TasksDispatchContext.Provider value={dispatch}>
+        <div className="w-fit m-auto">
+          <h1 className="text-3xl text-extrabold mb-5">
+            My Goals January Week 3
+          </h1>
+          <AddTask />
+          <TaskList />
+        </div>
+      </TasksDispatchContext.Provider>
+    </TasksContext.Provider>
   );
 }
 export default function App() {
